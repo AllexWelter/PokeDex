@@ -1,5 +1,5 @@
 import express from 'express'
-import pokemonRoutes from './src/controllers/pokemonControllers.js'
+import pokemonRoutes from './src/controllers/pokemonController.js'
 
 const app = express()
 app.use(express.json())
