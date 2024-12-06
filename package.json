@@ -1,7 +1,7 @@
 {
   "name": "pokedex",
   "version": "1.0.0",
-  "description": "Criação de um Projeto de criação e consumo de uma API baseada em auma PokéDex",
+  "description": "Criação de um Projeto de criação e consumo de uma API baseada em uma PokéDex",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
