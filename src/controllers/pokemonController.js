@@ -16,4 +16,4 @@ const getPokemon = async (req, res) => {
     }
 }
 
-export default { getPokemon }
+export { getPokemon }

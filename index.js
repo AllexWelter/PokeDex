@@ -1,10 +1,10 @@
 import express from 'express'
-import pokemonRoutes from './src/controllers/pokemonController.js'
+import pokemonRoutes from './src/routes/pokemonRoutes.js'
 
 const app = express()
 app.use(express.json())
 
-app.use('/api', pokemonRoutes.router)
+app.use('/api', pokemonRoutes)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
