@@ -1,5 +1,5 @@
 import { Router} from 'express'
-import { getPokemon } from '../controllers/pokemonControllers'
+import { getPokemon } from '../controllers/pokemonControllers.js'
 
 const router = Router()
 
