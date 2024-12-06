@@ -4,7 +4,7 @@ import pokemonRoutes from './src/controllers/pokemonController.js'
 const app = express()
 app.use(express.json())
 
-app.use('/api', pokemonRoutes)
+app.use('/api', pokemonRoutes.router)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
