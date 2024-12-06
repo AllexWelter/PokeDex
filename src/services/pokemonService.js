@@ -13,7 +13,7 @@ const getPokemonFromDatabase = async (id) => {
     }    
 }
 
-const getPokemonFromPokeApi = async(id) => {
+const getPokemonFromPokeAPI = async(id) => {
     try {
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon/${id}')
         return response.data
@@ -23,4 +23,4 @@ const getPokemonFromPokeApi = async(id) => {
     }
 }
 
-export { getPokemonFromDatabase, getPokemonFromPokeApi}
+export { getPokemonFromDatabase, getPokemonFromPokeAPI}
