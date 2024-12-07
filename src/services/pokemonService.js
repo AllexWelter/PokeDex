@@ -15,7 +15,7 @@ const getPokemonFromDatabase = async (id) => {
 
 const getPokemonFromPokeAPI = async(id) => {
     try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon/${id}')
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
         return response.data
     } catch (error) {
         console.error('Erro ao buscar Pokémon na PokéAPI:', error)
