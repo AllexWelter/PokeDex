@@ -40,7 +40,7 @@ const listarPokemons = async (req, res) => {
         const values = []
 
         if (tipo) {
-            sql += ` WHERE tipo = ?`
+            sql += sql.includes('WHERE') ? ` AND tipo = ?` : ` WHERE tipo = ?`
             values.push(tipo)
         }
 
