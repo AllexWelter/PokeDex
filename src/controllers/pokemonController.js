@@ -40,6 +40,10 @@ const listarPokemons = async (req, res) => {
             sql += `WHERE tipo = ?`
             values.push(tipo)
         }
+
+        sql += `ORDER BY ${ordenacao} LIMIT ? OFFSET ?`
+        const offset = (pagina - 1) * limite
+        values.push(limite, offset)
     }
 }
 
