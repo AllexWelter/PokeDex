@@ -31,7 +31,15 @@ const getPokemon = async (req, res) => {
 
 const listarPokemons = async (req, res) => {
     try {
-        const {}
+        const { pagina = 1, limite = 10, ordenacao = 'id', tipo} = req.query
+        
+        let sql = `SELECT * FROM pokemon`
+        const values = []
+
+        if (tipo) {
+            sql += `WHERE tipo = ?`
+            values.push(tipo)
+        }
     }
 }
 
