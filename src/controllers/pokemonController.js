@@ -7,6 +7,10 @@ const getPokemon = async (req, res) => {
 
         if (!pokemon) {
             pokemon = await getPokemonFromPokeAPI(id)
+
+            try {
+                
+            }
         }
 
         res.json(pokemon)
