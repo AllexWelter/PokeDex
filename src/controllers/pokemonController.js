@@ -44,6 +44,14 @@ const listarPokemons = async (req, res) => {
         sql += `ORDER BY ${ordenacao} LIMIT ? OFFSET ?`
         const offset = (pagina - 1) * limite
         values.push(limite, offset)
+
+        const conexao = await connection
+        const [pokemons] = await conexao.execute(sql, values)
+        
+        res.json(pokemons)
+    } catch (error) {
+        console.error('Erro ao listar Pokémons:', error)
+        res.status(500).json({error: 'Erro ao listar Pokémons'})
     }
 }
 
