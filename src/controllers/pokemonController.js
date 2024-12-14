@@ -14,7 +14,7 @@ const getPokemon = async (req, res) => {
               const values = [pokemon.id, pokemon.name, pokemon.types[0].type.name]
               const conexao = await connection
               await conexao.execute(sql, values)
-              console.log('Pokémon salvo no banco de dados')  
+              console.log('Pokémon salvo no banco de dados!')  
             } catch (error) {
                 console.error('Erro ao salvar Pokémon no banco de dados:', error)
                 res.status(500).json({error: 'Erro ao salvar Pokémon' })
