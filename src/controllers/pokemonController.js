@@ -55,4 +55,4 @@ const listarPokemons = async (req, res) => {
     }
 }
 
-export { getPokemon }
+export { getPokemon, listarPokemons }
