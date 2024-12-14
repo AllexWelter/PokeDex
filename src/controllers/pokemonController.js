@@ -30,7 +30,9 @@ const getPokemon = async (req, res) => {
 }
 
 const listarPokemons = async (req, res) => {
-
+    try {
+        const {}
+    }
 }
 
 export { getPokemon }
