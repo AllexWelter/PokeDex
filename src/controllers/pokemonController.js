@@ -29,4 +29,8 @@ const getPokemon = async (req, res) => {
     }
 }
 
+const listarPokemons = async (req, res) => {
+
+}
+
 export { getPokemon }
