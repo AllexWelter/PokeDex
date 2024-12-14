@@ -11,7 +11,7 @@ const getPokemon = async (req, res) => {
 
             try {
               const sql = `INSERTO INTO pokemon (id, nome, tipo) VALUES (?, ?, ?)`
-              const values = [pokemon.id, pokemon.name, pokemon.type[0].type.name]
+              const values = [pokemon.id, pokemon.name, pokemon.types[0].type.name]
               const conexao = await connection
               await conexao.execute(sql, values)
               console.log('Pokémon salvo no banco de dados')  
