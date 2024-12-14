@@ -17,7 +17,7 @@ const getPokemon = async (req, res) => {
               console.log('Pokémon salvo no banco de dados')  
             } catch (error) {
                 console.error('Erro ao salvar Pokémon no banco de dados:', error)
-                res.status(500).json({error: 'Erro ao salvar Pokémon'})
+                res.status(500).json({error: 'Erro ao salvar Pokémon' })
                 return    
             }
         }
