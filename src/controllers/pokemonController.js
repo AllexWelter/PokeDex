@@ -9,7 +9,8 @@ const getPokemon = async (req, res) => {
             pokemon = await getPokemonFromPokeAPI(id)
 
             try {
-              const sql = `INSERTO INTO pokemon (id, nome, tipo)`  
+              const sql = `INSERTO INTO pokemon (id, nome, tipo) VALUES (?, ?, ?)`
+              const values = [pokemon.id, pokemon.nome, pokemon.type[0].type.name]  
             }
         }
 
