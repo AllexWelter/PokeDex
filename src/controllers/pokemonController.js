@@ -31,7 +31,7 @@ const getPokemon = async (req, res) => {
 
 const listarPokemons = async (req, res) => {
     try {
-        const { pagina = 1, limite = 10, ordenacao = 'id', tipo} = req.query
+        const { pagina = 1, limite = 10, ordenacao = 'id', tipo } = req.query
         
         let sql = `SELECT * FROM pokemon`
         const values = []
