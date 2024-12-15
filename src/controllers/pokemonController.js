@@ -79,4 +79,4 @@ const buscarPokemonPorNome = async (req, res) => {
     }
 }
 
-export { getPokemon, listarPokemons, bu }
+export { getPokemon, listarPokemons, buscarPokemonPorNome }
