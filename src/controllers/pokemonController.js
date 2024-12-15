@@ -65,7 +65,7 @@ const buscaPokemonPorNome = async (req, res) => {
         const { nome } = req.query
 
         if (!nome) {
-            retun res.status(400).json({error: 'O parâmetro "nome" é obrigatório'})
+            return res.status(400).json({error: 'O parâmetro "nome" é obrigatório'})
         }
 
         const sql = `SELECT * FROM pokemon WHERE nome LIKE`
