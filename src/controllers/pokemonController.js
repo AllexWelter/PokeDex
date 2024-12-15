@@ -60,4 +60,8 @@ const listarPokemons = async (req, res) => {
     }
 }
 
+const buscaPokemonPorNome = async (req, res) => {
+    
+}
+
 export { getPokemon, listarPokemons }
