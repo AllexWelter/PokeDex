@@ -60,7 +60,7 @@ const listarPokemons = async (req, res) => {
     }
 }
 
-const buscaPokemonPorNome = async (req, res) => {
+const buscarPokemonPorNome = async (req, res) => {
     try {
         const { nome } = req.query
 
@@ -74,8 +74,9 @@ const buscaPokemonPorNome = async (req, res) => {
 
         res.json(pokemons)
     } catch (error) {
-        console.error('Erro ao buscar Pokémon')
+        console.error('Erro ao buscar Pokémon por nome:', error)
+        res.status(500).json({error: 'Erro ao buscar Pokémon por nome'})
     }
 }
 
-export { getPokemon, listarPokemons }
+export { getPokemon, listarPokemons, bu }
