@@ -61,7 +61,15 @@ const listarPokemons = async (req, res) => {
 }
 
 const buscaPokemonPorNome = async (req, res) => {
-    
+    try {
+        const { nome } = req.query
+
+        if (!nome) {
+            retun res.status(400).json({error: 'O parâmetro "nome" é obrigatório'})
+        }
+
+        const sql = `SELECT * FROM pokemon WHERE nome LIKE`
+    }
 }
 
 export { getPokemon, listarPokemons }
