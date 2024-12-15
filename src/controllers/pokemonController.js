@@ -69,6 +69,12 @@ const buscaPokemonPorNome = async (req, res) => {
         }
 
         const sql = `SELECT * FROM pokemon WHERE nome LIKE`
+        const conexao = await connection
+        const [pokemons] = await conexao.execute(sql, [`%${nome}%`])
+
+        res.json(pokemons)
+    } catch (error) {
+        console.error('Erro ao buscar Pokémon')
     }
 }
 
