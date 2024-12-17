@@ -10,7 +10,7 @@ const getPokemon = async (req, res) => {
         await body('nome').isString().notEmpty().run(req)
         await body('tipo').isString().notEmpty().run(req)
 
-        const erros = validationResult(req)
+        const errors = validationResult(req)
 
         if(!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array()})
