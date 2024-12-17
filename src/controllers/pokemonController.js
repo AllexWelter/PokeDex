@@ -1,13 +1,14 @@
 import connection from '../database/db.js'
 import { getPokemonFromDatabase, getPokemonFromPokeAPI } from '../services/pokemonService.js'
 import pokemonSchema from '../schemas/pokemonSchema.js'
-import * as yup from 'yup'
+import yup from 'yup';
 
 const getPokemon = async (req, res) => {
     try {
         const id = req.params.id
 
         await yup.validate(req.body, pokemonSchema)
+
         let pokemon = await getPokemonFromDatabase(id)
 
         if (!pokemon) {
