@@ -1,13 +1,11 @@
 import connection from '../database/db.js'
 import { getPokemonFromDatabase, getPokemonFromPokeAPI } from '../services/pokemonService.js'
-import pokemonSchema from '../schemas/pokemonSchema.js'
-import yup from 'yup';
+
 
 const getPokemon = async (req, res) => {
     try {
         const id = req.params.id
 
-        await yup.validate(req.body, pokemonSchema)
 
         let pokemon = await getPokemonFromDatabase(id)
 
@@ -29,14 +27,8 @@ const getPokemon = async (req, res) => {
 
         res.json(pokemon)
     } catch (error) {
-        if (error instanceof yup.ValidationError) {
-            console.error('Erro de validação:', error)
-            res.status(400).json({ error: error.errors })
-        } else {
-            console.log('Erro ao buscar Pokémon:', error)
-            res.status(500).json({ error: 'Erro ao buscar Pokémon' })
-        }
-
+        console.log('Erro ao buscar Pokémon:', error)
+        res.status(500).json({ error: 'Erro ao buscar Pokémon' })
     }
 }
 
