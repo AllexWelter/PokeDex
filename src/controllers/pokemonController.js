@@ -1,9 +1,13 @@
 import connection from '../database/db.js'
 import { getPokemonFromDatabase, getPokemonFromPokeAPI } from '../services/pokemonService.js'
+import pokemonSchema from '../schemas/pokemonSchema.js'
+import * as yup from 'yup'
 
 const getPokemon = async (req, res) => {
     try {
         const id = req.params.id
+
+        await yup.validate(req.body, pokemonSchema)
         let pokemon = await getPokemonFromDatabase(id)
 
         if (!pokemon) {
@@ -24,8 +28,14 @@ const getPokemon = async (req, res) => {
 
         res.json(pokemon)
     } catch (error) {
-        console.log('Erro ao buscar Pokémon:', error)
-        res.status(500).json({ error: 'Erro ao buscar Pokémon' })
+        if (error instanceof yup.ValidationError) {
+            console.error('Erro de validação:', error)
+            res.status(400).json({ error: error.errors })
+        } else {
+            console.log('Erro ao buscar Pokémon:', error)
+            res.status(500).json({ error: 'Erro ao buscar Pokémon' })
+        }
+
     }
 }
 
@@ -65,7 +75,7 @@ const buscarPokemonPorNome = async (req, res) => {
         const { nome } = req.query
 
         if (!nome) {
-            return res.status(400).json({error: 'O parâmetro "nome" é obrigatório.'})
+            return res.status(400).json({ error: 'O parâmetro "nome" é obrigatório.' })
         }
 
         const sql = `SELECT * FROM pokemon WHERE nome LIKE ?`
@@ -75,7 +85,7 @@ const buscarPokemonPorNome = async (req, res) => {
         res.json(pokemons)
     } catch (error) {
         console.error('Erro ao buscar Pokémon por nome:', error)
-        res.status(500).json({error: 'Erro ao buscar Pokémon por nome'})
+        res.status(500).json({ error: 'Erro ao buscar Pokémon por nome' })
     }
 }
 
