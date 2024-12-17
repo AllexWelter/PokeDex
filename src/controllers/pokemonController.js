@@ -1,11 +1,10 @@
 import connection from '../database/db.js'
 import { getPokemonFromDatabase, getPokemonFromPokeAPI } from '../services/pokemonService.js'
-
+import { body, validationResult } from 'express-validator'
 
 const getPokemon = async (req, res) => {
     try {
         const id = req.params.id
-
 
         let pokemon = await getPokemonFromDatabase(id)
 
