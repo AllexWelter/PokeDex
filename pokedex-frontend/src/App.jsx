@@ -2,9 +2,9 @@ import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 
 function App() {
-  const [pokemons, setPokemon] = useState([])
+  const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true)
-  const [erros, setError] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchPokemons = async () => {
