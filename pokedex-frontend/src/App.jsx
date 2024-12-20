@@ -36,10 +36,12 @@ function App() {
       <ul>
         {pokemons.map(pokemon => (
           <li key={pokemon.id}>
-
+            {pokemon.id} - {pokemon.nome} - {pokemon.tipo}
           </li>
         ))}
       </ul>
     </div>
   )
 }
+
+export default App
