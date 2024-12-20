@@ -18,5 +18,28 @@ function App() {
         setLoading(false)
       }  
     }
-  })
+
+    fetchPokemons()
+  }, []) // Array vazio como segundo argumento garante que o UseEffect seja executado apenas uma vez
+
+  if (loading) {
+    return <div>Carregando...</div>
+  }
+
+  if (error) {
+    return <div>Erro: {error.message}</div>
+  }
+
+  return (
+    <div>
+      <h1>POkéDex</h1>
+      <ul>
+        {pokemons.map(pokemon => (
+          <li key={pokemon.id}>
+
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
