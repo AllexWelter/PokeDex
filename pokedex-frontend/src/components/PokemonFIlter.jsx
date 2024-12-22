@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-function PokemonList({ onFilter }) {
+function PokemonFilter({ onFilter }) {
     const [types, setTypes] = useState([])
 
     useEffect(() => {
