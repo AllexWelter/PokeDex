@@ -32,4 +32,4 @@ function PokemonList({ onFilter }) {
         )
 } 
 
-export default PokemonList
+export default PokemonFilter
