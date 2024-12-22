@@ -16,6 +16,13 @@ function PokemonList({ onFilter }) {
         fetchTypes()            
     }, [])  // Array vazio como segundo argumento garante que o useEffect seja executado apenas uma vez
 
+        const handleChange = (event) => {
+            onFilter(event.target.value)
+        }
+
+        return (
+            
+        )
 } 
 
 
