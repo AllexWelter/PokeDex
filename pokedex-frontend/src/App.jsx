@@ -34,6 +34,10 @@ function App() {
     fetchPokemons()
   }, [searchTerm, selectedType]) // Executa o useEffect quando o searchTerm ou selectedType mudam
 
+  const handleSearch = (term) => {
+    setSearchTerm(ter)
+  }
+
   if (loading) {
     return <div>Carregando...</div>
   }
