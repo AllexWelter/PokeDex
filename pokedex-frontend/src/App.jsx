@@ -8,12 +8,21 @@ function App() {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedType, setSelectedType] = useState('')
 
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
         setLoading(true)
-        const response = await axios.get('http://localhost:3000/api/pokemons')
+        let apiUrl = 'http://localhost.3000/api/pokemons'
+        if (searchTerm) {
+          apiUrl += `?nome=${searchTerm}`
+        }
+        if (selectedType) {
+          apiUrl += (searchTerm ? '&' : '?') + `tipo=${selectedType}`
+        }
+        const response = await axios.get(apiUrl)
         setPokemons(response.data)
       } catch (error) {
         setError(error)
@@ -23,7 +32,7 @@ function App() {
     }
 
     fetchPokemons()
-  }, []) // Array vazio como segundo argumento garante que o UseEffect seja executado apenas uma vez
+  }, [searchTerm, selectedType]) // Executa o useEffect quando o searchTerm ou selectedType mudam
 
   if (loading) {
     return <div>Carregando...</div>
