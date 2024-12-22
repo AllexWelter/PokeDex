@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PokemonCard ({ pokemon }) {
+function PokemonCard({ pokemon }) {
     return (
         <div className='pokemon-card'>
             <img

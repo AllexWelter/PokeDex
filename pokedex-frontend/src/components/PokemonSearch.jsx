@@ -12,13 +12,13 @@ function PokemonSearch({ onSearch }) {
         onSearch(searchTerm)
     }
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
             <input
-            type='text'
-            placeholder='Busca Pokémon...'
-            value={searchTerm}
-            onChange={handleChange}
+                type='text'
+                placeholder='Busca Pokémon...'
+                value={searchTerm}
+                onChange={handleChange}
             />
             <button type='submit'>Buscar</button>
         </form>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import PokemonList from './components/PokemonList'
 import PokemonSearch from './components/PokemonSearch'
@@ -19,7 +19,7 @@ function App() {
         setError(error)
       } finally {
         setLoading(false)
-      }  
+      }
     }
 
     fetchPokemons()
