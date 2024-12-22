@@ -15,7 +15,7 @@ function App() {
     const fetchPokemons = async () => {
       try {
         setLoading(true)
-        let apiUrl = 'http://localhost.3000/api/pokemons'
+        let apiUrl = 'http://localhost:3000/api/pokemons'
         if (searchTerm) {
           apiUrl += `?nome=${searchTerm}`
         }
@@ -35,7 +35,11 @@ function App() {
   }, [searchTerm, selectedType]) // Executa o useEffect quando o searchTerm ou selectedType mudam
 
   const handleSearch = (term) => {
-    setSearchTerm(ter)
+    setSearchTerm(term)
+  }
+
+  const handleFilter = (type) => {
+    setSelectedType(type)
   }
 
   if (loading) {
@@ -49,13 +53,9 @@ function App() {
   return (
     <div>
       <h1>POkéDex</h1>
-      <ul>
-        {pokemons.map(pokemon => (
-          <li key={pokemon.id}>
-            {pokemon.id} - {pokemon.nome} - {pokemon.tipo}
-          </li>
-        ))}
-      </ul>
+    <PokemonSearch onSearch={handleSearch} />
+    <PokemonFilter onFilter={handleFilter} />  
+    <PokemonList pokemons={pokemons} />
     </div>
   )
 }
