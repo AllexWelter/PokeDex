@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 
 function PokemonCard({ pokemon }) {
     console.log('Sprites do Pokemon', pokemon.sprites)
