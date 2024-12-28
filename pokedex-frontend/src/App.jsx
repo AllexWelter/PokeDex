@@ -25,6 +25,7 @@ function App() {
         }
         console.log(apiUrl)
         const response = await axios.get(apiUrl)
+        setPokemons(prevPokemons => response.data)
         console.log(response.data)
         setPokemons(response.data)
         console.log(pokemons)
