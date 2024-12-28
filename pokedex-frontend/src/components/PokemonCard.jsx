@@ -2,10 +2,8 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function PokemonCard({ pokemon }) {
-    console.log('Sprites do Pokemon', pokemon.sprites)
-    if (!pokemon || !pokemon.sprites || Object.keys(pokemon.sprites).length === 0) {
-        return <div>Carregando...</div>
-    }
+    const [pokemonData, setPokemonData] = useState(null)  //Estado para armazenar os dados do Pokémon
+    const [isLoading, setIsLoading] = useState(true)      //Estado para controlar o carregamento
 
     return (
         <div className='pokemon-card'>
