@@ -1,7 +1,7 @@
 import React from 'react'
 
 function PokemonCard({ pokemon }) {
-    console.log('Dados do Pokemon no PokemonCard', pokemon)
+    console.log('Sprites do Pokemon', pokemon.sprites)
     if (!pokemon || !pokemon.sprites || Object.keys(pokemon.sprites).length === 0) {
         return <div>Carregando...</div>
     }
