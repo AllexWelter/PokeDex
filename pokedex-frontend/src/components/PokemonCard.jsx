@@ -8,7 +8,7 @@ function PokemonCard({ pokemon }) {
     useEffect(() => {
         const fetchPokemonData = async () => {
             try {
-                const response = await axios.get ('http://localhost:3000/api/pokemon/${pokemon.id}')
+                const response = await axios.get (`http://localhost:3000/api/pokemon/${pokemon.id}`)
                 setPokemonData(response.data)
             } catch (error) {
                 console.error('Erro ao buscar dados do Pokémon: ', error)
