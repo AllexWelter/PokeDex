@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 function PokemonCard({ pokemon }) {
     console.log('Sprites do Pokemon', pokemon.sprites)
