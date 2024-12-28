@@ -39,6 +39,8 @@ function App() {
 
     console.log(searchTerm)
     console.log(selectedType)
+
+    setListKey(prevKey => prevKey + 1)
   }, [searchTerm, selectedType]) // Executa o useEffect quando o searchTerm ou selectedType mudam
 
   const handleSearch = (term) => {
@@ -65,6 +67,7 @@ function App() {
     <PokemonSearch onSearch={handleSearch} />
     <PokemonFilter onFilter={handleFilter} />  
     <PokemonList pokemons={pokemons} />
+    <PokemonList key={listKey} pokemons={pokemons} />
     </div>
   )
 }
