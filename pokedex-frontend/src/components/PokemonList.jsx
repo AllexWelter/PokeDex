@@ -6,9 +6,11 @@ function PokemonList({ pokemons }) {
         <ul className="pokemon-list">
             {pokemons.map(pokemon => {
                 console.log('Pokemon no map: ', pokemon)
-                <li key={pokemon.id}>
-                    <PokemonCard pokemon={pokemon} />
-                </li>
+                return (
+                    <li key={pokemon.id}>
+                        <PokemonCard pokemon={pokemon} />
+                    </li>
+                )
             })}
         </ul>
     )
