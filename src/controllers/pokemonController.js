@@ -68,7 +68,7 @@ const listarPokemons = async (req, res) => {
         const conexao = await connection
         const [pokemons] = await conexao.execute(sql, values)
 
-        console.log('Pokemons econtrados:', pokemons)   //log dos pokemons encontrados
+        console.log('Pokemons encontrados:', pokemons)   //log dos pokemons encontrados
 
         res.json(pokemons)
     } catch (error) {
