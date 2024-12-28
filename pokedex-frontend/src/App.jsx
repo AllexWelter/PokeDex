@@ -48,10 +48,12 @@ function App() {
   }
 
   if (loading) {
+    console.log('loading', loading)
     return <div>Carregando...</div>
   }
 
   if (error) {
+    console.log('error', error)
     return <div>Erro: {error.message}</div>
   }
 
