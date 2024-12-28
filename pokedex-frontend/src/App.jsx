@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedType, setSelectedType] = useState('')
-  const [listKey, setListkey] = useState(0)
+  const [listKey, setListKey] = useState(0)
 
   useEffect(() => {
     const fetchPokemons = async () => {
