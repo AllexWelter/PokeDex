@@ -62,6 +62,9 @@ const listarPokemons = async (req, res) => {
             values.push(limiteNumero, offset)
         }
 
+        console.log('Query SQL:', sql)   //log da query sql
+        console.log('Valore:', values)  //log dos valores 
+
         const conexao = await connection
         const [pokemons] = await conexao.execute(sql, values)
 
