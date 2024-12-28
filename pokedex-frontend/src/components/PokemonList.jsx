@@ -2,6 +2,8 @@ import React from 'react'
 import PokemonCard from './PokemonCard'
 
 function PokemonList({ pokemons }) {
+    console.log('Lista de Pokémons no PokemonList:', pokemons)
+
     return (
         <ul className="pokemon-list">
             {pokemons.map(pokemon => {
