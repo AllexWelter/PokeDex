@@ -6,7 +6,7 @@ const getPokemon = async (req, res) => {
     try {
         const id = req.params.id
 
-        await body('id').isInt({ min: 1}).run(req)
+       /* await body('id').isInt({ min: 1}).run(req)
         await body('nome').isString().notEmpty().run(req)
         await body('tipo').isString().notEmpty().run(req)
 
@@ -15,7 +15,8 @@ const getPokemon = async (req, res) => {
         if(!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array()})
         }
-
+        */
+       
         let pokemon = await getPokemonFromDatabase(id)
 
         if (!pokemon) {
