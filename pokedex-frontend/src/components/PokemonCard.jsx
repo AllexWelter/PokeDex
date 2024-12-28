@@ -24,17 +24,22 @@ function PokemonCard({ pokemon }) {
         return <div>Carregando...</div>
     }
 
-    return (
-        <div className='pokemon-card'>
-            <img
-                src={pokemonData.sprites.front_default}
-                alt={pokemonData.name}
-            />
-            <h3>{pokemonData.name}</h3> {/* Nome do Pokémon */}
-            <p>Tipo: {pokemonData.types.map(type => type.type.name).join(', ')}</p> {/* Tipo(s) do Pokémon */}
-            {/* Adicione outra informações do Pokémon que desejar exibir */}
-        </div>
-    )
+    if (pokemonData) {
+        return (
+            <div className='pokemon-card'>
+                <img
+                    src={pokemonData.sprites.front_default}
+                    alt={pokemonData.name}
+                />
+                <h3>{pokemonData.name}</h3> {/* Nome do Pokémon */}
+                <p>Tipo: {pokemonData.types.map(type => type.type.name).join(', ')}</p> {/* Tipo(s) do Pokémon */}
+                {/* Adicione outra informações do Pokémon que desejar exibir */}
+            </div>
+        )
+    } else {
+        return <div>Pokémon não encontrado</div>
+    }
+    
 }
 
 export default PokemonCard
