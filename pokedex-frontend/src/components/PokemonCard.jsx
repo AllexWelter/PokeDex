@@ -26,7 +26,7 @@ function PokemonCard({ pokemon }) {
         return <div>Carregando...</div>
     }
 
-    if (pokemonData) {
+    if (pokemonData && pokemonData.sprites) {
         return (
             <div className='pokemon-card'>
                 <img
