@@ -27,11 +27,11 @@ function PokemonCard({ pokemon }) {
     return (
         <div className='pokemon-card'>
             <img
-                src={pokemon.sprites.front_default}
-                alt={pokemon.name}
+                src={pokemonData.sprites.front_default}
+                alt={pokemonData.name}
             />
-            <h3>{pokemon.name}</h3> {/* Nome do Pokémon */}
-            <p>Tipo: {pokemon.types.map(type => type.type.name).join(', ')}</p> {/* Tipo(s) do Pokémon */}
+            <h3>{pokemonData.name}</h3> {/* Nome do Pokémon */}
+            <p>Tipo: {pokemonData.types.map(type => type.type.name).join(', ')}</p> {/* Tipo(s) do Pokémon */}
             {/* Adicione outra informações do Pokémon que desejar exibir */}
         </div>
     )
