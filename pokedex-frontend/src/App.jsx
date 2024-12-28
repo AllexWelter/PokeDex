@@ -22,7 +22,9 @@ function App() {
         if (selectedType) {
           apiUrl += (searchTerm ? '&' : '?') + `tipo=${selectedType}`
         }
+        console.log(apiUrl)
         const response = await axios.get(apiUrl)
+        console.log(response.data)
         setPokemons(response.data)
       } catch (error) {
         setError(error)
@@ -32,6 +34,9 @@ function App() {
     }
 
     fetchPokemons()
+
+    console.log(searchTerm)
+    console.log(selectedType)
   }, [searchTerm, selectedType]) // Executa o useEffect quando o searchTerm ou selectedType mudam
 
   const handleSearch = (term) => {
