@@ -20,6 +20,8 @@ function PokemonCard({ pokemon }) {
         fetchPokemonData()
     }, [pokemon.id])
 
+    console.log('Dados do Pokémon no PokemonCard:', pokemonData)
+
     if (isLoading) {
         return <div>Carregando...</div>
     }
