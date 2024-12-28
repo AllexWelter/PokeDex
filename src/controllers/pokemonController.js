@@ -85,6 +85,8 @@ const buscarPokemonPorNome = async (req, res) => {
             return res.status(400).json({ error: 'O parâmetro "nome" é obrigatório.' })
         }
 
+        console.log('Requisição recebida:', req.query)   //log da requisicao
+
         const sql = `SELECT * FROM pokemon WHERE nome LIKE ?`
         const conexao = await connection
         const [pokemons] = await conexao.execute(sql, [`%${nome}%`])
