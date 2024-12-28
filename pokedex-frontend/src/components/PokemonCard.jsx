@@ -5,6 +5,10 @@ function PokemonCard({ pokemon }) {
     const [pokemonData, setPokemonData] = useState(null)  //Estado para armazenar os dados do Pokémon
     const [isLoading, setIsLoading] = useState(true)      //Estado para controlar o carregamento
 
+    useEffect(() => {
+        
+    })
+
     return (
         <div className='pokemon-card'>
             <img
