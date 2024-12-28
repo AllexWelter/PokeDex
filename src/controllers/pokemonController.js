@@ -10,6 +10,12 @@ const getPokemon = async (req, res) => {
             await body('id').isInt({ min: 1}).run(req)
             await body('nome').isString().notEmpty().run(req)
             await body('tipo').isString().notEmpty().run(req)
+
+            const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array()})
+        }
         }
 
        /* await body('id').isInt({ min: 1}).run(req)
