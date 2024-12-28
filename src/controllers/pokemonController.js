@@ -91,6 +91,8 @@ const buscarPokemonPorNome = async (req, res) => {
         const conexao = await connection
         const [pokemons] = await conexao.execute(sql, [`%${nome}%`])
 
+        console.log('Pokémons encontrados:', pokemons)   //log dos pokemons encontrados
+
         res.json(pokemons)
     } catch (error) {
         console.error('Erro ao buscar Pokémon por nome:', error)
