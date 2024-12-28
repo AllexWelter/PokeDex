@@ -20,6 +20,10 @@ function PokemonCard({ pokemon }) {
         fetchPokemonData()
     }, [pokemon.id])
 
+    if (isLoading) {
+        return <div>Carregando...</div>
+    }
+
     return (
         <div className='pokemon-card'>
             <img
