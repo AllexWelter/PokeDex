@@ -64,9 +64,9 @@ function App() {
   return (
     <div>
       <h1>POkéDex</h1>
-    <PokemonSearch onSearch={handleSearch} />
-    <PokemonFilter onFilter={handleFilter} />  
-    <PokemonList key={listKey} pokemons={pokemons} />
+      <PokemonSearch onSearch={handleSearch} />
+      <PokemonFilter onFilter={handleFilter} />
+      <PokemonList key={listKey} pokemons={pokemons} />
     </div>
   )
 }
