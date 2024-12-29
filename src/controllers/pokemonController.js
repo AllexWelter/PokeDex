@@ -7,27 +7,27 @@ const getPokemon = async (req, res) => {
         const id = req.params.id
 
         if (req.method === 'POST') {
-            await body('id').isInt({ min: 1}).run(req)
+            await body('id').isInt({ min: 1 }).run(req)
             await body('nome').isString().notEmpty().run(req)
             await body('tipo').isString().notEmpty().run(req)
 
             const errors = validationResult(req)
 
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array()})
-        }
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() })
+            }
         }
 
-       /* await body('id').isInt({ min: 1}).run(req)
-        await body('nome').isString().notEmpty().run(req)
-        await body('tipo').isString().notEmpty().run(req)
-
-        const errors = validationResult(req)
-
-        if(!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array()})
-        }
-        */
+        /* await body('id').isInt({ min: 1}).run(req)
+         await body('nome').isString().notEmpty().run(req)
+         await body('tipo').isString().notEmpty().run(req)
+ 
+         const errors = validationResult(req)
+ 
+         if(!errors.isEmpty()) {
+             return res.status(400).json({ errors: errors.array()})
+         }
+         */
 
         let pokemon = await getPokemonFromDatabase(id)
 
