@@ -1,63 +1,73 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import PokemonList from './components/PokemonList';
-import PokemonSearch from './components/PokemonSearch';
-import PokemonFilter from './components/PokemonFilter.jsx';
-import PokemonDetails from './components/PokemonDetails';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import PokemonList from "./components/PokemonList";
+import PokemonSearch from "./components/PokemonSearch";
+import PokemonFilter from "./components/PokemonFilter.jsx";
+import PokemonDetails from "./components/PokemonDetails";
+import "./App.css";
 
 function App() {
-  const [pokemons, setPokemons] = useState([]); // Estado para armazenar a lista completa de Pokémons com detalhes
-  const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
-  const [error, setError] = useState(null); // Estado para armazenar erros
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para armazenar o termo de busca
-  const [selectedType, setSelectedType] = useState(''); // Estado para armazenar o tipo selecionado
-  const [selectedPokemon, setSelectedPokemon] = useState(null); // Estado para armazenar o Pokémon selecionado
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   useEffect(() => {
-    // Função para buscar os Pokémons da API
     const fetchPokemons = async () => {
       try {
-        setLoading(true); // Inicia o carregamento
-        const response = await axios.get('http://localhost:3000/api/pokemons'); // Faz a requisição para a API para buscar todos os Pokémons
+        setLoading(true);
+
+        // Construir a URL da API com base na busca e filtro
+        let apiUrl = "http://localhost:3000/api/pokemons";
+        if (searchTerm) {
+          apiUrl += `?nome=${searchTerm}`;
+        }
+        if (selectedType) {
+          apiUrl += (searchTerm ? "&" : "?") + `tipo=${selectedType}`;
+        }
+
+        const response = await axios.get(apiUrl); // Faz a requisição para a API
+
+        // Buscar os detalhes de cada Pokémon, incluindo a imagem
         const pokemonsWithDetails = await Promise.all(
-          response.data.map(pokemon => 
-            axios.get(`http://localhost:3000/api/pokemon/${pokemon.id}`) // Busca os detalhes de cada Pokémon
-            .then(res => res.data)
-          )
+          response.data.map((pokemon) =>
+            axios
+              .get(`http://localhost:3000/api/pokemon/${pokemon.id}`)
+              .then((res) => res.data),
+          ),
         );
-        setPokemons(pokemonsWithDetails); // Atualiza o estado com a lista completa de Pokémons com detalhes
+
+        setPokemons(pokemonsWithDetails); // Atualiza o estado com a lista de Pokémons completa
       } catch (error) {
-        setError(error); // Em caso de erro, armazena o erro no estado
+        setError(error);
       } finally {
-        setLoading(false); // Define o carregamento como concluído
+        setLoading(false);
       }
     };
 
-    fetchPokemons(); // Chama a função para buscar os Pokémons
-  }, []); // Executa o efeito apenas uma vez, quando o componente é montado
+    fetchPokemons();
+  }, [searchTerm, selectedType]); // Executa o useEffect quando searchTerm ou selectedType mudam
 
-  // Função para lidar com a busca
   const handleSearch = (term) => {
-    setSearchTerm(term); // Atualiza o estado searchTerm com o termo de busca
+    setSearchTerm(term);
   };
 
-  // Função para lidar com o filtro
   const handleFilter = (type) => {
-    setSelectedType(type); // Atualiza o estado selectedType com o tipo selecionado
+    setSelectedType(type);
   };
 
-  // Função para lidar com o clique no Pokémon
   const handlePokemonClick = (pokemon) => {
-    setSelectedPokemon(pokemon); // Atualiza o estado selectedPokemon com o Pokémon selecionado
+    setSelectedPokemon(pokemon);
   };
 
   if (loading) {
-    return <div>Carregando...</div>; // Exibe uma mensagem de carregamento
+    return <div>Carregando...</div>;
   }
 
   if (error) {
-    return <div>Erro: {error.message}</div>; // Exibe a mensagem de erro
+    return <div>Erro: {error.message}</div>;
   }
 
   return (
