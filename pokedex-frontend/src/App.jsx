@@ -3,7 +3,7 @@ import axios from 'axios'
 import PokemonList from './components/PokemonList'
 import PokemonSearch from './components/PokemonSearch'
 import PokemonFilter from './components/PokemonFilter'
-import PokemonFilter from './components/PokemonDetails'
+import PokemonDetails from './components/PokemonDetails'
 import '../src/App.css'
 
 function App() {
@@ -69,11 +69,27 @@ function App() {
   }
 
   return (
-    <div className="container"> {/* Adiciona a classe "container" */}
-      <h1 className="title">Pokédex</h1> {/* Adiciona a classe "title" */}
-      <PokemonSearch onSearch={handleSearch} />
-      <PokemonFilter onFilter={handleFilter} />
-      <PokemonList key={listKey} pokemons={pokemons} />
+    <div className="pokedex-container">
+      <h1 className="pokedex-title">Seja Bem-vindo a PokéDex do Artigo Tech</h1>
+      <p className="pokedex-subtitle">Digite o nome ou o ID do Pokémon que você quer buscar:</p>
+      <div className="search-container">
+        <input type="text" className="search-input" placeholder="Nome ou ID do Pokémon" />
+        <button className="search-button">Buscar</button>
+      </div>
+      <div className="pokemon-details">
+        {/* Aqui serão exibidos os detalhes do Pokémon */}
+        {pokemonData && (
+          <div>
+            <img src={pokemonData.sprites.front_default} alt={pokemonData.name} className="pokemon-image" />
+            <h2 className="pokemon-name">{pokemonData.name}</h2>
+            <p className="pokemon-info">Altura: {pokemonData.height}m | Peso: {pokemonData.weight}kg | Tipo: {pokemonData.types.map(type => type.type.name).join(', ')}</p>
+          </div>
+        )}
+      </div>
+      <div className="navigation-buttons">
+        <button className="nav-button">Pokémon Anterior</button>
+        <button className="nav-button">Próximo Pokémon</button>
+      </div>
     </div>
   );
 }

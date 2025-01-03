@@ -1,7 +1,19 @@
 import React from 'react'
 import PokemonCard from './PokemonCard'
 
-function PokemonList({ pokemons }) {
+function PokemonList({ pokemons, onPokemonClick }) { // Recebe a função onPokemonClick como prop
+    return (
+      <ul className="pokemon-list">
+        {pokemons.map(pokemon => (
+          <li key={pokemon.id} onClick={() => onPokemonClick(pokemon)}> {/* Chama onPokemonClick ao clicar no item da lista */}
+            <PokemonCard pokemon={pokemon} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+/*function PokemonList({ pokemons }) {
     console.log('Lista de Pokémons no PokemonList:', pokemons)
 
     return (
@@ -17,5 +29,6 @@ function PokemonList({ pokemons }) {
         </ul>
     )
 }
+*/
 
 export default PokemonList
