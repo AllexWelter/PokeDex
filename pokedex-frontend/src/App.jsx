@@ -3,6 +3,7 @@ import axios from 'axios'
 import PokemonList from './components/PokemonList'
 import PokemonSearch from './components/PokemonSearch'
 import PokemonFilter from './components/PokemonFilter'
+import PokemonFilter from './components/PokemonDetails'
 import '../src/App.css'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedType, setSelectedType] = useState('')
   const [listKey, setListKey] = useState(0)
+  const [selectedPokemon, setSelectedPokemon] = useState(null)
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -52,6 +54,10 @@ function App() {
     setSelectedType(type)
   }
 
+  const handlePokemonClick = (pokemon) => {
+    setSelectedPokemon(pokemon); // Atualiza o estado com o Pokémon selecionado
+  };  
+
   if (loading) {
     console.log('loading', loading)
     return <div>Carregando...</div>
@@ -63,13 +69,13 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>POkéDex</h1>
+    <div className="container"> {/* Adiciona a classe "container" */}
+      <h1 className="title">Pokédex</h1> {/* Adiciona a classe "title" */}
       <PokemonSearch onSearch={handleSearch} />
       <PokemonFilter onFilter={handleFilter} />
       <PokemonList key={listKey} pokemons={pokemons} />
     </div>
-  )
+  );
 }
 
 export default App
