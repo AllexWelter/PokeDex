@@ -75,8 +75,8 @@ const listarPokemons = async (req, res) => {
             values.push(limiteNumero, offset)
         }
 
-        console.log('Query SQL:', sql)   //log da query sql
-        console.log('Valores:', values)  //log dos valores 
+        console.log('Requisição recebida na API:', req.query); // Adicione esta linha
+
 
         const conexao = await connection
         const [pokemons] = await conexao.execute(sql, values)
@@ -98,13 +98,13 @@ const buscarPokemonPorNome = async (req, res) => {
             return res.status(400).json({ error: 'O parâmetro "nome" é obrigatório.' })
         }
 
-        console.log('Requisição recebida:', req.query)   //log da requisicao
+        console.log('Requisição recebida na API:', req.query); // Adicione esta linha
 
         const sql = `SELECT * FROM pokemon WHERE nome LIKE ?`
         const conexao = await connection
         const [pokemons] = await conexao.execute(sql, [`%${nome}%`])
 
-        console.log('Pokémons encontrados:', pokemons)   //log dos pokemons encontrados
+        console.log('Pokémons encontrados na API:', pokemons); // Adicione esta linha
 
         res.json(pokemons)
     } catch (error) {

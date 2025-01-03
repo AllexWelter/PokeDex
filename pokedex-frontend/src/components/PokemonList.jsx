@@ -1,34 +1,21 @@
-import React from 'react'
-import PokemonCard from './PokemonCard'
+import React from 'react';
+import PokemonCard from './PokemonCard';
 
-function PokemonList({ pokemons, onPokemonClick }) { // Recebe a função onPokemonClick como prop
-    return (
-      <ul className="pokemon-list">
-        {pokemons.map(pokemon => (
-          <li key={pokemon.id} onClick={() => onPokemonClick(pokemon)}> {/* Chama onPokemonClick ao clicar no item da lista */}
-            <PokemonCard pokemon={pokemon} />
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-/*function PokemonList({ pokemons }) {
-    console.log('Lista de Pokémons no PokemonList:', pokemons)
+function PokemonList({ pokemons, onPokemonClick }) {
+    console.log('Lista de Pokémons no PokemonList.jsx:', pokemons); // Adicione esta linha
 
     return (
         <ul className="pokemon-list">
             {pokemons.map(pokemon => {
-                console.log('Pokemon no map: ', pokemon)
+                console.log('Pokémon no PokemonList.jsx:', pokemon);
                 return (
-                    <li key={pokemon.id}>
+                    <li key={pokemon.id} onClick={() => onPokemonClick(pokemon)}>
                         <PokemonCard pokemon={pokemon} />
                     </li>
-                )
+                );
             })}
         </ul>
-    )
+    );
 }
-*/
 
-export default PokemonList
+export default PokemonList;

@@ -1,4 +1,3 @@
-// src/components/PokemonDetails.jsx
 import React from 'react';
 
 function PokemonDetails({ pokemon }) {

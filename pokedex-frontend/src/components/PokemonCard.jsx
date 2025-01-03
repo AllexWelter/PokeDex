@@ -2,40 +2,27 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function PokemonCard({ pokemon }) {
-  const [pokemonData, setPokemonData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // ... (código do estado e useEffect)
 
-  useEffect(() => {
-    const fetchPokemonData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3000/api/pokemon/${pokemon.id}`);
-        setPokemonData(response.data);
-      } catch (error) {
-        console.error('Erro ao buscar dados do Pokémon: ', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  console.log('Pokémon recebido no PokemonCard.jsx:', pokemon);
+  console.log('Sprites do Pokémon no PokemonCard.jsx:', pokemon.sprites);
+  console.log('Pokémon completo no PokemonCard.jsx:', pokemon); // Adicione esta linha
 
-    fetchPokemonData();
-  }, [pokemon.id]);
+  // Remova a condição abaixo:
+  // if (isLoading) {
+  //   return <div>Carregando...</div>;
+  // }
 
-  console.log('Dados do Pokémon no PokemonCard:', pokemonData);
-
-  if (isLoading) {
-    return <div>Carregando...</div>;
-  }
-
-  // Verifica se pokemonData não é null antes de acessar as propriedades
-  if (pokemonData) {
+  // Verifica se pokemon e pokemon.sprites estão definidos
+  if (pokemon && pokemon.sprites) {
     return (
       <div className='pokemon-card'>
         <img
-          src={pokemonData.sprites.front_default}
-          alt={pokemonData.name}
+          src={pokemon.sprites.front_default}
+          alt={pokemon.name}
         />
-        <h3>{pokemonData.name}</h3>
-        <p>Tipo: {pokemonData.types.map(type => type.type.name).join(', ')}</p>
+        <h3>{pokemon.name}</h3>
+        <p>Tipo: {pokemon.types.map(type => type.type.name).join(', ')}</p>
       </div>
     );
   } else {
