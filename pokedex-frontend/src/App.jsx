@@ -3,6 +3,7 @@ import axios from 'axios'
 import PokemonList from './components/PokemonList'
 import PokemonSearch from './components/PokemonSearch'
 import PokemonFilter from './components/PokemonFilter'
+import '../src/App.css'
 
 function App() {
   const [pokemons, setPokemons] = useState([])
