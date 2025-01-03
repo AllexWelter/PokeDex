@@ -13,7 +13,8 @@ const inserirPokemon = async (pokemon) => {
     try {
         const sql = `INSERT INTO pokemon (id, nome, tipo) VALUES (?, ?, ?)`;
         const values = [pokemon.id, pokemon.name, pokemon.types[0].type.name];
-        await connection.execute(sql, values);
+        const conexao = await connection;
+        await conexao.execute(sql, values);
         console.log(`Pokémon ${pokemon.name} inserido com sucesso!`);
     } catch (error) {
         console.error('Erro ao inserir Pokémon:', error);
